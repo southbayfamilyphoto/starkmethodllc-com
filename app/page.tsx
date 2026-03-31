@@ -143,10 +143,10 @@ const OUTCOMES = [
     note: 'Best for: founders ready to move from "one of many" to "the one."',
   },
   {
-    id: 'leads',
-    label: 'Leads',
-    headline: 'Turn content into a lead machine.',
-    sub: 'Traffic without conversion is a hobby. We build the system that turns attention into pipeline.',
+    id: 'roi',
+    label: 'ROI',
+    headline: 'Turn content into a return.',
+    sub: 'Traffic without conversion is a hobby. We build the system that turns attention into revenue — and proves it.',
     items: [
       'Lead capture and nurture architecture',
       'Email sequences that convert',
@@ -167,6 +167,19 @@ const OUTCOMES = [
       'Referral loops built into the experience',
     ],
     note: 'Best for: founders who want leverage. One-to-many instead of one-to-one.',
+  },
+  {
+    id: 'ai-search',
+    label: 'AI Search',
+    headline: 'Become the answer AI gives.',
+    sub: 'When someone asks an AI who to hire, you want your name to come up. Consistency across every platform is how that happens. We build it.',
+    items: [
+      'Brand consistency across all platforms',
+      'AI citation and authority architecture',
+      'Structured content for AI indexing',
+      'Schema, signals, and search dominance',
+    ],
+    note: 'Best for: founders who understand that AI search is the next category war — and want to win it.',
   },
 ]
 
@@ -208,7 +221,7 @@ function OutcomeBlock() {
         textAlign: 'center',
         margin: '0 auto 48px',
       }}>
-        Four outcomes.
+        Five outcomes.
       </h2>
 
       {/* Outcome buttons */}
