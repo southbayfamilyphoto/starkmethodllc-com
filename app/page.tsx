@@ -82,33 +82,6 @@ function IntroBlock() {
         />
       )}
 
-      {/* Value props */}
-      {showProps && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {[
-            { delay: '0s',    text: 'Founder Leverage.' },
-            { delay: '0.3s',  text: 'Market Authority.' },
-            { delay: '0.6s',  text: 'Community Growth.' },
-            { delay: '0.9s',  text: 'AI Search.' },
-          ].map(({ delay, text }) => (
-            <p
-              key={text}
-              className="fade-up"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: 13,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--accent)',
-                animationDelay: delay,
-                animationDuration: '0.7s',
-              }}
-            >
-              {text}
-            </p>
-          ))}
-        </div>
-      )}
 
     </section>
   )
@@ -187,14 +160,13 @@ function OutcomeBlock() {
     >
       {/* Section label */}
       <p style={{
-        fontFamily: "'DM Sans', sans-serif",
-        fontSize: 13,
-        letterSpacing: '0.22em',
-        textTransform: 'uppercase',
+        fontFamily: "'Cormorant Garamond', serif",
+        fontSize: 'clamp(32px, 5vw, 52px)',
+        fontWeight: 300,
+        letterSpacing: '0.04em',
         color: 'var(--accent)',
-        marginBottom: 16,
+        marginBottom: 0,
         textAlign: 'center',
-        opacity: 0.85,
       }}>
         One system.
       </p>
