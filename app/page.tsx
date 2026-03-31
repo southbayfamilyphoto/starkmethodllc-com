@@ -87,8 +87,10 @@ function IntroBlock() {
       {showProps && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {[
-            { delay: '0s',    text: 'The creative is the fuel.' },
-            { delay: '0.3s',  text: 'The tracking is the proof.' },
+            { delay: '0s',    text: 'Founder Leverage.' },
+            { delay: '0.3s',  text: 'Market Authority.' },
+            { delay: '0.6s',  text: 'Community Growth.' },
+            { delay: '0.9s',  text: 'AI Search.' },
           ].map(({ delay, text }) => (
             <p
               key={text}
