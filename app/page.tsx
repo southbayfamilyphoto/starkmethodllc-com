@@ -145,7 +145,7 @@ const OUTCOMES = [
 ]
 
 function OutcomeBlock() {
-  const [active, setActive] = useState<string | null>(null)
+  const [active, setActive] = useState<string | null>('founder-leverage')
 
   const current = OUTCOMES.find(o => o.id === active)
 
@@ -186,11 +186,11 @@ function OutcomeBlock() {
       </h2>
 
       {/* Outcome buttons */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 48, justifyContent: 'center' }}>
+      <div className="flex flex-wrap justify-center gap-3 md:gap-2 mb-12">
         {OUTCOMES.map(o => (
           <button
             key={o.id}
-            className={`outcome-btn ${active === o.id ? 'active' : ''}`}
+            className={`outcome-btn ${active === o.id ? 'active' : ''} w-full md:w-auto`}
             onClick={() => setActive(active === o.id ? null : o.id)}
           >
             {o.label}
