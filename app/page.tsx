@@ -190,7 +190,7 @@ function OutcomeBlock() {
         {OUTCOMES.map(o => (
           <button
             key={o.id}
-            className={`outcome-btn ${active === o.id ? 'active' : ''} max-w-[48%] md:max-w-none`}
+            className={`outcome-btn ${active === o.id ? 'active' : ''} max-w-[48%] md:max-w-none [white-space:normal] md:[white-space:nowrap] text-center`}
             onClick={() => setActive(active === o.id ? null : o.id)}
           >
             {o.label}
