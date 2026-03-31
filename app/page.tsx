@@ -30,7 +30,7 @@ function IntroBlock() {
       flexDirection: 'column',
       alignItems: 'center',
       textAlign: 'center',
-      padding: '80px 48px 24px',
+      padding: '80px 48px 0px',
       maxWidth: 960,
       margin: '0 auto',
     }}>
@@ -153,7 +153,7 @@ function OutcomeBlock() {
     <section
       id="outcomes"
       style={{
-        padding: '48px 48px 80px',
+        padding: '24px 48px 80px',
         maxWidth: 960,
         margin: '0 auto',
       }}
