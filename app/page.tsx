@@ -215,12 +215,10 @@ function OutcomeBlock() {
           }}>
             {current.headline}
           </h3>
-          <p style={{
+          <p className="text-sm md:text-[17px]" style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 17,
             color: 'rgba(245,240,235,0.65)',
             lineHeight: 1.7,
-            marginBottom: 28,
             maxWidth: 560,
             margin: '0 auto 28px',
           }}>
@@ -229,11 +227,10 @@ function OutcomeBlock() {
 
           <ul style={{ listStyle: 'none', marginBottom: 28, textAlign: 'center' }}>
             {current.items.map((item, i) => (
-              <li key={i} style={{
+              <li key={i} className="text-sm md:text-base" style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 16,
                 color: 'rgba(245,240,235,0.8)',
-                padding: '8px 0',
+                padding: '6px 0',
                 lineHeight: 1.5,
               }}>
                 {item}
