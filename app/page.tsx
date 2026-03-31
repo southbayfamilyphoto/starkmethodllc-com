@@ -194,7 +194,7 @@ function OutcomeBlock() {
         marginBottom: 24,
         textAlign: 'center',
       }}>
-        Choose Your Outcome
+        One system.
       </p>
 
       <h2 style={{
@@ -208,7 +208,7 @@ function OutcomeBlock() {
         textAlign: 'center',
         margin: '0 auto 48px',
       }}>
-        What does your business need most right now?
+        Four outcomes.
       </h2>
 
       {/* Outcome buttons */}
