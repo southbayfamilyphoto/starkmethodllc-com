@@ -5,7 +5,7 @@ import React, { useEffect, useState, useRef } from 'react'
 // ─── Block 1: Animated Intro ─────────────────────────────────────────────────
 
 const TITLE = 'Stark Method'
-const TAGLINE = 'We build founder brand architecture for AI search.'
+const TAGLINE = 'Done-for-you founder leverage.'
 
 const LETTER_DELAYS: Record<number, number> = {}
 TITLE.split('').forEach((_, i) => {
@@ -509,23 +509,23 @@ function ClientGrid() {
 const PROCESS = [
   {
     number: '01',
-    title: 'Market Authority Audit',
-    body: 'We perform a deep dive diagnostic of your existing content, messaging, and data. Our goal is to identify the DNA of your expertise — locating exactly where your brand\'s leverage exists and where authority is being lost in your market.',
+    title: 'The Leverage Audit',
+    body: 'We start by finding where your leverage already exists and where it\'s being lost. Deep diagnostic of your content, positioning, and market presence — so we build on what\'s real, not what sounds good.',
   },
   {
     number: '02',
-    title: 'The Branding System',
-    body: 'We build your Identity Architecture — a comprehensive system of verbal and visual standards. This isn\'t a one-off project; it\'s a living framework that ensures you show up online with the same caliber and authenticity as you do in person, across every touchpoint.',
+    title: 'The Identity System',
+    body: 'We build your brand architecture — the verbal and visual standards that make you unmistakable. Consistent across every platform. Built once, maintained as a living system. This is how AI learns who the authority is.',
   },
   {
     number: '03',
-    title: 'Marketing Machine → Collect & Compound',
-    body: 'Strategic narrative video and written authority power your entire ecosystem — social, AI search, email, and SEO. This is your Authority Pipeline: a system that extracts your expertise once to build compounding credibility and community over time.',
+    title: 'The Leverage Machine',
+    body: 'Video, content, and narrative strategy that powers your entire ecosystem — social, email, AI search, and SEO. Your story, extracted once and compounded everywhere. You stay focused on your business. We run the machine.',
   },
   {
     number: '04',
-    title: 'Authenticity Powered by AI',
-    body: 'Your brand\'s attention flows into a single, permanent system. Custom landing pages and CRM architecture connect digital visibility to real human relationships. We track, measure, and optimize your ecosystem continuously so your community, credibility, and ROI compound while you stay focused on your vision.',
+    title: 'Track. Prove. Scale.',
+    body: 'Every piece of attention flows into a single system. CRM, landing pages, and tracking that connects visibility to real relationships and real revenue. We measure what works and scale it. The ROI is the proof.',
   },
 ]
 
@@ -561,7 +561,7 @@ function ProcessBlock() {
           textAlign: 'center',
           margin: '0 auto 72px',
         }}>
-          Four phases. One compounding system.
+          Four phases. One system. Compounding leverage.
         </h2>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 0, maxWidth: 680, margin: '0 auto' }}>
@@ -648,15 +648,15 @@ function AboutBlock() {
           {[
             {
               label: 'The Foundation',
-              body: 'Stark Method is a strategy-first system built for founders who understand the value of consistency over time. Our perspective was forged in Los Angeles since the early 2000s inside industries where reputation, taste, and proximity are the only currencies that matter.',
+              body: 'Stark Method was built in Los Angeles over 23 years inside industries where reputation, taste, and proximity are the only currencies that matter. We are not an agency. We are not a vendor. We are the founder\'s partner — peer-level, in the room, building alongside you.',
             },
             {
               label: 'The Belief',
-              body: 'Growth comes from clarity, discipline, and repetition — not from chasing fleeting tactics. While attention can be bought, respect is earned. And when respect compounds, momentum follows.',
+              body: 'Consistency across every platform is no longer just branding — it\'s how AI decides who the authority is. The founders who build the right system now will own their category for the next decade. We build that system for you.',
             },
             {
               label: 'The Work',
-              body: 'The brands that last are the ones that know what they stand for and show up that way consistently. Stark Method exists to help you build your narrative, run the machine, and let your brand compound in your market.',
+              body: 'We build your leverage like it\'s ours. That means we don\'t hand you a deck and disappear. We build it, run it, and scale it — until the system works without you in every seat. Done for you. Built to last.',
             },
           ].map((col) => (
             <div key={col.label}>
