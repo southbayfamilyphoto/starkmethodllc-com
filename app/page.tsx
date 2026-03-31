@@ -437,6 +437,546 @@ function OutcomeBlock() {
   )
 }
 
+// ─── Block 3: Client Proof Grid ──────────────────────────────────────────────
+
+// Images slot in here — key matches filename in /public/clients/
+// e.g. { id: 'puma', label: 'Puma', image: '/clients/puma.jpg' }
+// Leave image null until drive files arrive — shows name only
+const CLIENTS: { id: string; label: string; type: 'brand' | 'photo' | 'press'; image?: string }[] = [
+  { id: 'barrentine',  label: 'Barrentine Group',         type: 'brand' },
+  { id: 'madison',     label: 'Madison',                  type: 'brand' },
+  { id: 'athreya',     label: 'Athreya',                  type: 'brand' },
+  { id: 'binghams',    label: "Bingham's Bourbon",        type: 'brand' },
+  { id: 'puma',        label: 'Puma',                     type: 'brand' },
+  { id: 'samanthasung',label: 'Samantha Sung',            type: 'brand' },
+  { id: 'pyrrha',      label: 'Pyrrha',                   type: 'brand' },
+  { id: 'uboat',       label: 'U-Boat',                   type: 'brand' },
+  { id: 'marinelayer', label: 'Marine Layer',             type: 'brand' },
+  { id: 'sundaysomewhere', label: 'Sunday Somewhere',     type: 'brand' },
+  { id: 'enzomilano',  label: 'Enzo Milano',              type: 'brand' },
+  { id: 'omarepps',    label: 'Omar Epps',                type: 'photo' },
+  { id: 'tonylama',    label: 'Tony Lama',                type: 'brand' },
+  { id: 'loganhollowell', label: 'Logan Hollowell',       type: 'brand' },
+  { id: 'calfarley',   label: "Cal Farley's",             type: 'brand' },
+  { id: 'moleskine',   label: 'Moleskine',                type: 'brand' },
+  { id: 'vogue',       label: 'Vogue',                    type: 'press' },
+  { id: 'gooseberry',  label: 'Gooseberry',               type: 'brand' },
+  { id: 'billboard',   label: 'Billboard',                type: 'press' },
+  { id: 'kobalt',      label: 'Kobalt',                   type: 'brand' },
+  { id: 'fenty',       label: 'Fenty',                    type: 'brand' },
+  { id: 'lgr',         label: 'LGR',                      type: 'brand' },
+  { id: 'officinecreative', label: 'Officine Creative',  type: 'brand' },
+  { id: 'thrive',      label: 'Thrive Cosmetics',         type: 'brand' },
+  { id: 'laurenroxburgh', label: 'Lauren Roxburgh',       type: 'photo' },
+  { id: 'couragerise', label: 'The Courage Rise',         type: 'photo' },
+  { id: 'fatherless',  label: 'From Fatherless to Fatherhood', type: 'photo' },
+  { id: 'goodhyouman', label: 'good hYOUman',            type: 'brand' },
+  { id: 'status',      label: 'Status',                   type: 'press' },
+]
+
+const TYPE_COLOR: Record<string, string> = {
+  brand: 'rgba(196,168,130,0.12)',
+  photo: 'rgba(245,240,235,0.06)',
+  press: 'rgba(196,168,130,0.08)',
+}
+
+function ClientGrid() {
+  return (
+    <section style={{
+      padding: '100px 48px',
+      borderTop: '1px solid rgba(196,168,130,0.1)',
+    }}>
+      <div style={{ maxWidth: 960, margin: '0 auto' }}>
+
+        {/* Label */}
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: 11,
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          color: 'var(--accent)',
+          marginBottom: 16,
+        }}>
+          Clients &amp; Work
+        </p>
+
+        <h2 style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: 'clamp(28px, 4vw, 44px)',
+          fontWeight: 300,
+          color: 'var(--cream)',
+          lineHeight: 1.2,
+          marginBottom: 56,
+          maxWidth: 560,
+        }}>
+          The work spans brands, talent, editorial, and founders.
+        </h2>
+
+        {/* Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
+          gap: 2,
+        }}>
+          {CLIENTS.map(client => (
+            <div
+              key={client.id}
+              style={{
+                aspectRatio: client.image ? 'auto' : '1 / 1',
+                backgroundColor: client.image ? 'transparent' : TYPE_COLOR[client.type],
+                border: '1px solid rgba(196,168,130,0.08)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: 16,
+                overflow: 'hidden',
+                position: 'relative',
+              }}
+            >
+              {client.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={client.image}
+                  alt={client.label}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+              ) : (
+                <span style={{
+                  fontFamily: client.type === 'press'
+                    ? "'Cormorant Garamond', serif"
+                    : "'DM Sans', sans-serif",
+                  fontSize: client.type === 'press' ? 15 : 11,
+                  fontWeight: client.type === 'press' ? 400 : 500,
+                  letterSpacing: client.type === 'press' ? '0.02em' : '0.12em',
+                  textTransform: client.type === 'press' ? 'none' : 'uppercase',
+                  color: client.type === 'press'
+                    ? 'rgba(245,240,235,0.7)'
+                    : 'rgba(245,240,235,0.45)',
+                  textAlign: 'center',
+                  lineHeight: 1.3,
+                }}>
+                  {client.label}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Footer note */}
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: 12,
+          color: 'rgba(245,240,235,0.2)',
+          letterSpacing: '0.08em',
+          marginTop: 32,
+          textAlign: 'right',
+        }}>
+          Partial list — 23 years of work.
+        </p>
+      </div>
+    </section>
+  )
+}
+
+// ─── Block 4: Process / Services ─────────────────────────────────────────────
+
+const PROCESS = [
+  {
+    number: '01',
+    title: 'Market Authority Audit',
+    body: 'We perform a deep dive diagnostic of your existing content, messaging, and data. Our goal is to identify the DNA of your expertise — locating exactly where your brand\'s leverage exists and where authority is being lost in your market.',
+  },
+  {
+    number: '02',
+    title: 'The Branding System',
+    body: 'We build your Identity Architecture — a comprehensive system of verbal and visual standards. This isn\'t a one-off project; it\'s a living framework that ensures you show up online with the same caliber and authenticity as you do in person, across every touchpoint.',
+  },
+  {
+    number: '03',
+    title: 'Marketing Machine → Collect & Compound',
+    body: 'Strategic narrative video and written authority power your entire ecosystem — social, AI search, email, and SEO. This is your Authority Pipeline: a system that extracts your expertise once to build compounding credibility and community over time.',
+  },
+  {
+    number: '04',
+    title: 'Authenticity Powered by AI',
+    body: 'Your brand\'s attention flows into a single, permanent system. Custom landing pages and CRM architecture connect digital visibility to real human relationships. We track, measure, and optimize your ecosystem continuously so your community, credibility, and ROI compound while you stay focused on your vision.',
+  },
+]
+
+function ProcessBlock() {
+  return (
+    <section style={{
+      padding: '100px 48px',
+      borderTop: '1px solid rgba(196,168,130,0.1)',
+      backgroundColor: 'rgba(196,168,130,0.03)',
+    }}>
+      <div style={{ maxWidth: 960, margin: '0 auto' }}>
+
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: 11,
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          color: 'var(--accent)',
+          marginBottom: 16,
+        }}>
+          How It Works
+        </p>
+
+        <h2 style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: 'clamp(28px, 4vw, 44px)',
+          fontWeight: 300,
+          color: 'var(--cream)',
+          lineHeight: 1.2,
+          marginBottom: 72,
+          maxWidth: 520,
+        }}>
+          Four phases. One compounding system.
+        </h2>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+          {PROCESS.map((step, i) => (
+            <div
+              key={step.number}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '80px 1fr',
+                gap: 40,
+                padding: '48px 0',
+                borderTop: i === 0 ? '1px solid rgba(196,168,130,0.15)' : '1px solid rgba(196,168,130,0.1)',
+              }}
+            >
+              {/* Number */}
+              <div style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 48,
+                fontWeight: 300,
+                color: 'rgba(196,168,130,0.25)',
+                lineHeight: 1,
+                paddingTop: 4,
+              }}>
+                {step.number}
+              </div>
+
+              {/* Content */}
+              <div>
+                <h3 style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: 'clamp(20px, 2.5vw, 28px)',
+                  fontWeight: 400,
+                  color: 'var(--cream)',
+                  marginBottom: 16,
+                  lineHeight: 1.2,
+                }}>
+                  {step.title}
+                </h3>
+                <p style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 15,
+                  lineHeight: 1.75,
+                  color: 'rgba(245,240,235,0.55)',
+                  maxWidth: 560,
+                }}>
+                  {step.body}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div style={{
+          marginTop: 72,
+          paddingTop: 48,
+          borderTop: '1px solid rgba(196,168,130,0.1)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 40,
+          flexWrap: 'wrap',
+        }}>
+          <p style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 'clamp(20px, 2.5vw, 28px)',
+            fontWeight: 300,
+            color: 'var(--cream)',
+            lineHeight: 1.3,
+            maxWidth: 400,
+          }}>
+            Ready to build the system that compounds?
+          </p>
+          <a
+            href="#outcomes"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 12,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'var(--accent)',
+              textDecoration: 'none',
+              border: '1px solid rgba(196,168,130,0.4)',
+              padding: '14px 32px',
+              borderRadius: 2,
+              transition: 'all 0.2s ease',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Choose your outcome
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Block 5: About ──────────────────────────────────────────────────────────
+
+function AboutBlock() {
+  return (
+    <section style={{
+      padding: '120px 48px',
+      backgroundColor: 'var(--cream)',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
+      <div style={{
+        maxWidth: 680,
+        margin: '0 auto',
+        textAlign: 'center',
+        position: 'relative',
+        zIndex: 1,
+      }}>
+
+        <h2 style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: 'clamp(28px, 5vw, 48px)',
+          fontWeight: 700,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          color: 'var(--ink)',
+          marginBottom: 48,
+        }}>
+          About Us
+        </h2>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+          {[
+            'Stark Method is a strategy-first system built for founders who understand the value of consistency over time. Our perspective was forged in Los Angeles since the early 2000s inside industries where reputation, taste, and proximity are the only currencies that matter.',
+            'We believe growth comes from clarity, discipline, and repetition — not from chasing fleeting tactics. While attention can be bought, respect is earned. And when respect compounds, momentum follows.',
+            'Being close to culture and creative pressure has reinforced a simple truth: The brands that last are the ones that know what they stand for and show up that way consistently. Stark Method exists to help you build your narrative, run the machine, and let your brand compound in your market.',
+          ].map((para, i) => (
+            <p
+              key={i}
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 'clamp(14px, 1.6vw, 16px)',
+                lineHeight: 1.8,
+                color: 'rgba(26,26,26,0.72)',
+              }}
+            >
+              {para}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Block 6: Strategy Session Form + Footer ─────────────────────────────────
+
+function StrategyBlock() {
+  const [form, setForm]         = useState({ firstName: '', lastName: '', email: '', website: '', bizIg: '', personalIg: '', phone: '', notes: '' })
+  const [submitted, setSubmitted] = useState(false)
+  const [saving, setSaving]     = useState(false)
+
+  function set(field: string, value: string) {
+    setForm(prev => ({ ...prev, [field]: value }))
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setSaving(true)
+    try {
+      await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:    `${form.firstName} ${form.lastName}`.trim(),
+          email:   form.email,
+          outcome: 'strategy-session',
+          notes:   [
+            form.website     ? `Website: ${form.website}`         : '',
+            form.bizIg       ? `Biz IG: ${form.bizIg}`            : '',
+            form.personalIg  ? `Personal IG: ${form.personalIg}`  : '',
+            form.phone       ? `Phone: ${form.phone}`             : '',
+            form.notes       ? `Notes: ${form.notes}`             : '',
+          ].filter(Boolean).join('\n'),
+        }),
+      })
+    } catch {}
+    setSubmitted(true)
+    setSaving(false)
+  }
+
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    background: 'transparent',
+    border: 'none',
+    borderBottom: '1px solid rgba(196,168,130,0.3)',
+    padding: '12px 0',
+    fontFamily: "'DM Sans', sans-serif",
+    fontSize: 14,
+    color: 'var(--cream)',
+    outline: 'none',
+  }
+
+  return (
+    <>
+      {/* Form section */}
+      <section style={{
+        padding: '100px 48px 80px',
+        backgroundColor: 'var(--ink)',
+        borderTop: '1px solid rgba(196,168,130,0.1)',
+      }}>
+        <div style={{ maxWidth: 480, margin: '0 auto' }}>
+
+          <p style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 11,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            color: 'var(--accent)',
+            marginBottom: 16,
+            textAlign: 'center',
+          }}>
+            Let&apos;s Work Together
+          </p>
+
+          <h2 style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 'clamp(28px, 4vw, 44px)',
+            fontWeight: 300,
+            color: 'var(--cream)',
+            textAlign: 'center',
+            marginBottom: 56,
+            lineHeight: 1.2,
+          }}>
+            Start with a strategy session.
+          </h2>
+
+          {submitted ? (
+            <div style={{ textAlign: 'center', padding: '40px 0' }}>
+              <p style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 32,
+                fontWeight: 300,
+                color: 'var(--cream)',
+                marginBottom: 12,
+              }}>
+                We&apos;ll be in touch.
+              </p>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 14,
+                color: 'rgba(245,240,235,0.4)',
+              }}>
+                Collin will reach out within 24 hours.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                <input style={inputStyle} type="text"  placeholder="First name *"  value={form.firstName}  onChange={e => set('firstName',  e.target.value)} required />
+                <input style={inputStyle} type="text"  placeholder="Last name"      value={form.lastName}   onChange={e => set('lastName',   e.target.value)} />
+              </div>
+              <input style={inputStyle} type="email" placeholder="Email *"                       value={form.email}      onChange={e => set('email',      e.target.value)} required />
+              <input style={inputStyle} type="text"  placeholder="Business website"              value={form.website}    onChange={e => set('website',    e.target.value)} />
+              <input style={inputStyle} type="text"  placeholder="Business Instagram handle"     value={form.bizIg}      onChange={e => set('bizIg',      e.target.value)} />
+              <input style={inputStyle} type="text"  placeholder="Personal Instagram handle"     value={form.personalIg} onChange={e => set('personalIg', e.target.value)} />
+              <input style={inputStyle} type="tel"   placeholder="Phone number"                  value={form.phone}      onChange={e => set('phone',      e.target.value)} />
+              <input style={inputStyle} type="text"  placeholder="Anything you want us to know"  value={form.notes}      onChange={e => set('notes',      e.target.value)} />
+
+              <div style={{ marginTop: 8 }}>
+                <button
+                  type="submit"
+                  disabled={saving}
+                  style={{
+                    width: '100%',
+                    background: 'transparent',
+                    border: '1px solid var(--accent)',
+                    color: 'var(--accent)',
+                    borderRadius: 2,
+                    padding: '16px 32px',
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 12,
+                    letterSpacing: '0.18em',
+                    textTransform: 'uppercase',
+                    cursor: saving ? 'not-allowed' : 'pointer',
+                    opacity: saving ? 0.6 : 1,
+                    transition: 'all 0.25s ease',
+                  }}
+                >
+                  {saving ? 'Sending…' : 'Book Your Strategy Session'}
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer style={{
+        backgroundColor: '#3a3d42',
+        padding: '40px 48px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 32,
+        flexWrap: 'wrap',
+      }}>
+        <span style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: 'clamp(32px, 6vw, 64px)',
+          fontWeight: 800,
+          letterSpacing: '0.04em',
+          textTransform: 'uppercase',
+          color: '#fff',
+          lineHeight: 1,
+          opacity: 0.9,
+        }}>
+          Stark Method
+        </span>
+
+        <a
+          href="mailto:collin@starkmethodLLC.com"
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 'clamp(13px, 1.5vw, 16px)',
+            color: 'rgba(255,255,255,0.75)',
+            textDecoration: 'none',
+          }}
+        >
+          collin@starkmethodLLC.com
+        </a>
+
+        <a
+          href="tel:+13104300551"
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 'clamp(13px, 1.5vw, 16px)',
+            fontWeight: 600,
+            color: 'rgba(255,255,255,0.75)',
+            textDecoration: 'none',
+          }}
+        >
+          phone: (310) 430 0551
+        </a>
+      </footer>
+    </>
+  )
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -444,6 +984,10 @@ export default function Home() {
     <main>
       <IntroBlock />
       <OutcomeBlock />
+      <ClientGrid />
+      <ProcessBlock />
+      <AboutBlock />
+      <StrategyBlock />
     </main>
   )
 }
