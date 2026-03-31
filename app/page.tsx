@@ -117,10 +117,10 @@ function IntroBlock() {
 
 const OUTCOMES = [
   {
-    id: 'founder-transformation',
-    label: 'Founder Transformation',
-    headline: 'Rebuild your brand from the foundation.',
-    sub: 'Sometimes the brand needs to match the business you\'ve become. We rebuild it right.',
+    id: 'founder-leverage',
+    label: 'Founder Leverage',
+    headline: 'Build the brand that works while you do.',
+    sub: 'Your name, your story, your positioning — turned into a system that generates leverage at scale.',
     items: [
       'Brand architecture and positioning',
       'Visual identity and messaging system',
