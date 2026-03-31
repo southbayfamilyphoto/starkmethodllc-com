@@ -439,56 +439,54 @@ function OutcomeBlock() {
 
 // ─── Block 3: Client Proof Grid ──────────────────────────────────────────────
 
-// Images slot in here — key matches filename in /public/clients/
-// e.g. { id: 'puma', label: 'Puma', image: '/clients/puma.jpg' }
-// Leave image null until drive files arrive — shows name only
-const CLIENTS: { id: string; label: string; type: 'brand' | 'photo' | 'press'; image?: string }[] = [
-  { id: 'barrentine',  label: 'Barrentine Group',         type: 'brand' },
-  { id: 'madison',     label: 'Madison',                  type: 'brand' },
-  { id: 'athreya',     label: 'Athreya',                  type: 'brand' },
-  { id: 'binghams',    label: "Bingham's Bourbon",        type: 'brand' },
-  { id: 'puma',        label: 'Puma',                     type: 'brand' },
-  { id: 'samanthasung',label: 'Samantha Sung',            type: 'brand' },
-  { id: 'pyrrha',      label: 'Pyrrha',                   type: 'brand' },
-  { id: 'uboat',       label: 'U-Boat',                   type: 'brand' },
-  { id: 'marinelayer', label: 'Marine Layer',             type: 'brand' },
-  { id: 'sundaysomewhere', label: 'Sunday Somewhere',     type: 'brand' },
-  { id: 'enzomilano',  label: 'Enzo Milano',              type: 'brand' },
-  { id: 'omarepps',    label: 'Omar Epps',                type: 'photo' },
-  { id: 'tonylama',    label: 'Tony Lama',                type: 'brand' },
-  { id: 'loganhollowell', label: 'Logan Hollowell',       type: 'brand' },
-  { id: 'calfarley',   label: "Cal Farley's",             type: 'brand' },
-  { id: 'moleskine',   label: 'Moleskine',                type: 'brand' },
-  { id: 'vogue',       label: 'Vogue',                    type: 'press' },
-  { id: 'gooseberry',  label: 'Gooseberry',               type: 'brand' },
-  { id: 'billboard',   label: 'Billboard',                type: 'press' },
-  { id: 'kobalt',      label: 'Kobalt',                   type: 'brand' },
-  { id: 'fenty',       label: 'Fenty',                    type: 'brand' },
-  { id: 'lgr',         label: 'LGR',                      type: 'brand' },
-  { id: 'officinecreative', label: 'Officine Creative',  type: 'brand' },
-  { id: 'thrive',      label: 'Thrive Cosmetics',         type: 'brand' },
-  { id: 'laurenroxburgh', label: 'Lauren Roxburgh',       type: 'photo' },
-  { id: 'couragerise', label: 'The Courage Rise',         type: 'photo' },
-  { id: 'fatherless',  label: 'From Fatherless to Fatherhood', type: 'photo' },
-  { id: 'goodhyouman', label: 'good hYOUman',            type: 'brand' },
-  { id: 'status',      label: 'Status',                   type: 'press' },
-]
+// type: 'photo' = dark cell, fills naturally
+// type: 'logo'  = cream cell, padded, square-ish
+const BASE = '/clients/Stark Method Website Visuals/'
 
-const TYPE_COLOR: Record<string, string> = {
-  brand: 'rgba(196,168,130,0.12)',
-  photo: 'rgba(245,240,235,0.06)',
-  press: 'rgba(196,168,130,0.08)',
-}
+const GRID_ITEMS: { src: string; alt: string; type: 'photo' | 'logo' }[] = [
+  { src: `${BASE}00003.JPG`,  alt: 'Editorial portrait',         type: 'photo' },
+  { src: `${BASE}00002.PNG`,  alt: 'Madison',                    type: 'logo'  },
+  { src: `${BASE}00000.JPG`,  alt: 'Kevin Hart',                 type: 'photo' },
+  { src: `${BASE}00032.PNG`,  alt: 'Vogue',                      type: 'logo'  },
+  { src: `${BASE}00027.JPEG`, alt: 'Portrait',                   type: 'photo' },
+  { src: `${BASE}00028.PNG`,  alt: 'Puma',                       type: 'logo'  },
+  { src: `${BASE}00001.JPG`,  alt: 'Vogue editorial',            type: 'photo' },
+  { src: `${BASE}00005.JPG`,  alt: 'Barrentine Group',           type: 'logo'  },
+  { src: `${BASE}00029.JPG`,  alt: 'Omar Epps — From Fatherless to Fatherhood', type: 'photo' },
+  { src: `${BASE}00019.PNG`,  alt: 'Samantha Sung',              type: 'logo'  },
+  { src: `${BASE}00004.JPG`,  alt: 'Portrait',                   type: 'photo' },
+  { src: `${BASE}00014.PNG`,  alt: "Bingham's Bourbon",          type: 'logo'  },
+  { src: `${BASE}00006.JPG`,  alt: 'Portrait',                   type: 'photo' },
+  { src: `${BASE}00022.PNG`,  alt: 'Fenty',                      type: 'logo'  },
+  { src: `${BASE}00015.JPG`,  alt: 'Status Magazine — Ian Somerhalder', type: 'photo' },
+  { src: `${BASE}00012.JPG`,  alt: 'Athreya',                    type: 'logo'  },
+  { src: `${BASE}00020.JPG`,  alt: 'Portrait',                   type: 'photo' },
+  { src: `${BASE}00007.PNG`,  alt: 'Ed Hardy',                   type: 'logo'  },
+  { src: `${BASE}00021.JPEG`, alt: 'Aaron Paul',                 type: 'photo' },
+  { src: `${BASE}00030.PNG`,  alt: 'Pyrrha',                     type: 'logo'  },
+  { src: `${BASE}00031.PNG`,  alt: 'Taller Slimmer Younger — Lauren Roxburgh', type: 'photo' },
+  { src: `${BASE}00026.PNG`,  alt: 'Indochino',                  type: 'logo'  },
+  { src: `${BASE}00013.JPG`,  alt: 'Portrait',                   type: 'photo' },
+  { src: `${BASE}00025.JPG`,  alt: 'Billboard',                  type: 'logo'  },
+  { src: `${BASE}00008.JPG`,  alt: 'Portrait',                   type: 'photo' },
+  { src: `${BASE}00024.PNG`,  alt: 'Seventeen',                  type: 'logo'  },
+  { src: `${BASE}00017.JPEG`, alt: 'Omar Epps',                  type: 'photo' },
+  { src: `${BASE}00016.JPG`,  alt: 'Fenty x Puma',              type: 'logo'  },
+  { src: `${BASE}00009.JPG`,  alt: 'The Courage to Rise — Liz Arch', type: 'photo' },
+  { src: `${BASE}00011.JPG`,  alt: 'Athreya',                    type: 'photo' },
+  { src: `${BASE}00018.JPG`,  alt: 'Billboard — Kobalt',         type: 'photo' },
+  { src: `${BASE}00010.JPG`,  alt: 'Portrait',                   type: 'photo' },
+  { src: `${BASE}00023.JPG`,  alt: 'Portrait',                   type: 'photo' },
+]
 
 function ClientGrid() {
   return (
     <section style={{
-      padding: '100px 48px',
+      padding: '100px 0 0',
       borderTop: '1px solid rgba(196,168,130,0.1)',
     }}>
-      <div style={{ maxWidth: 960, margin: '0 auto' }}>
-
-        {/* Label */}
+      {/* Header */}
+      <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 48px 56px' }}>
         <p style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 11,
@@ -499,81 +497,64 @@ function ClientGrid() {
         }}>
           Clients &amp; Work
         </p>
-
         <h2 style={{
           fontFamily: "'Cormorant Garamond', serif",
           fontSize: 'clamp(28px, 4vw, 44px)',
           fontWeight: 300,
           color: 'var(--cream)',
           lineHeight: 1.2,
-          marginBottom: 56,
           maxWidth: 560,
         }}>
           The work spans brands, talent, editorial, and founders.
         </h2>
-
-        {/* Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
-          gap: 2,
-        }}>
-          {CLIENTS.map(client => (
-            <div
-              key={client.id}
-              style={{
-                aspectRatio: client.image ? 'auto' : '1 / 1',
-                backgroundColor: client.image ? 'transparent' : TYPE_COLOR[client.type],
-                border: '1px solid rgba(196,168,130,0.08)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: 16,
-                overflow: 'hidden',
-                position: 'relative',
-              }}
-            >
-              {client.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={client.image}
-                  alt={client.label}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                />
-              ) : (
-                <span style={{
-                  fontFamily: client.type === 'press'
-                    ? "'Cormorant Garamond', serif"
-                    : "'DM Sans', sans-serif",
-                  fontSize: client.type === 'press' ? 15 : 11,
-                  fontWeight: client.type === 'press' ? 400 : 500,
-                  letterSpacing: client.type === 'press' ? '0.02em' : '0.12em',
-                  textTransform: client.type === 'press' ? 'none' : 'uppercase',
-                  color: client.type === 'press'
-                    ? 'rgba(245,240,235,0.7)'
-                    : 'rgba(245,240,235,0.45)',
-                  textAlign: 'center',
-                  lineHeight: 1.3,
-                }}>
-                  {client.label}
-                </span>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Footer note */}
-        <p style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 12,
-          color: 'rgba(245,240,235,0.2)',
-          letterSpacing: '0.08em',
-          marginTop: 32,
-          textAlign: 'right',
-        }}>
-          Partial list — 23 years of work.
-        </p>
       </div>
+
+      {/* Masonry grid — full width */}
+      <div style={{
+        columns: '4 160px',
+        columnGap: 3,
+        padding: '0 3px',
+      }}>
+        {GRID_ITEMS.map((item, i) => (
+          <div
+            key={i}
+            style={{
+              breakInside: 'avoid',
+              marginBottom: 3,
+              backgroundColor: item.type === 'logo' ? 'var(--cream)' : '#0a0a0a',
+              padding: item.type === 'logo' ? '28px 24px' : 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              minHeight: item.type === 'logo' ? 100 : 'auto',
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={item.src}
+              alt={item.alt}
+              style={{
+                width: '100%',
+                height: item.type === 'logo' ? 'auto' : 'auto',
+                maxHeight: item.type === 'logo' ? 60 : 'none',
+                objectFit: item.type === 'logo' ? 'contain' : 'cover',
+                display: 'block',
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      <p style={{
+        fontFamily: "'DM Sans', sans-serif",
+        fontSize: 11,
+        color: 'rgba(245,240,235,0.2)',
+        letterSpacing: '0.08em',
+        textAlign: 'right',
+        padding: '16px 24px 0',
+      }}>
+        Partial list — 23 years of work.
+      </p>
     </section>
   )
 }
