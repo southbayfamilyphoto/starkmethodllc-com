@@ -206,19 +206,19 @@ function OutcomeBlock() {
             textAlign: 'center',
           }}
         >
-          <h3 style={{
+          <h3 className="text-[22px] md:text-[clamp(24px,3.5vw,36px)]" style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(24px, 3.5vw, 36px)',
             fontWeight: 400,
             color: 'var(--cream)',
             marginBottom: 12,
+            textWrap: 'balance',
           }}>
             {current.headline}
           </h3>
           <p className="text-sm md:text-[17px]" style={{
             fontFamily: "'DM Sans', sans-serif",
             color: 'rgba(245,240,235,0.65)',
-            lineHeight: 1.7,
+            lineHeight: 1.5,
             maxWidth: 560,
             margin: '0 auto 28px',
           }}>
@@ -561,13 +561,13 @@ function ProcessBlock() {
                 color: 'var(--cream)',
                 marginBottom: 16,
                 lineHeight: 1.2,
+                textWrap: 'balance',
               }}>
                 {step.title}
               </h3>
-              <p style={{
+              <p className="text-sm md:text-[15px]" style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 15,
-                lineHeight: 1.75,
+                lineHeight: 1.5,
                 color: 'rgba(245,240,235,0.55)',
                 maxWidth: 520,
                 margin: '0 auto',
