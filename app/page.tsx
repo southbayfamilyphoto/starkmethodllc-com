@@ -822,6 +822,21 @@ const inputStyle: React.CSSProperties = {
           gap: 32,
         }}>
           <a
+            href="/journal"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 'clamp(12px, 1.2vw, 14px)',
+              color: 'rgba(255,255,255,0.6)',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+            }}
+          >
+            Journal
+          </a>
+
+          <a
             href="mailto:collin@starkmethodLLC.com"
             style={{
               fontFamily: "'DM Sans', sans-serif",
