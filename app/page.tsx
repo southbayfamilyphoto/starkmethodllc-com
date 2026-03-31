@@ -168,7 +168,7 @@ function OutcomeBlock() {
         marginBottom: 0,
         textAlign: 'center',
       }}>
-        One system.
+        One system
       </p>
 
       <h2 style={{
@@ -182,7 +182,7 @@ function OutcomeBlock() {
         textAlign: 'center',
         margin: '0 auto 48px',
       }}>
-        Four outcomes.
+        Four outcomes
       </h2>
 
       {/* Outcome buttons */}
