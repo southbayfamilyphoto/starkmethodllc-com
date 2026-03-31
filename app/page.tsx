@@ -403,13 +403,14 @@ function ClientGrid() {
           transition: 'height 1s cubic-bezier(0.4, 0, 0.2, 1) 1.6s',
         }} />
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 1,
-          backgroundColor: visible2 ? 'rgba(196,168,130,0.35)' : 'transparent',
-          transition: 'background-color 0.6s ease 2.6s',
-        }}>
+        <div
+          className="grid grid-cols-2 md:grid-cols-4"
+          style={{
+            gap: 1,
+            backgroundColor: visible2 ? 'rgba(196,168,130,0.35)' : 'transparent',
+            transition: 'background-color 0.6s ease 2.6s',
+          }}
+        >
           {visible.map((item, i) => (
             <div
               key={i}
