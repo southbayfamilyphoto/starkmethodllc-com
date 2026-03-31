@@ -143,19 +143,6 @@ const OUTCOMES = [
     note: 'Best for: founders ready to move from "one of many" to "the one."',
   },
   {
-    id: 'roi',
-    label: 'ROI',
-    headline: 'Turn content into a return.',
-    sub: 'Traffic without conversion is a hobby. We build the system that turns attention into revenue — and proves it.',
-    items: [
-      'Lead capture and nurture architecture',
-      'Email sequences that convert',
-      'CRM and follow-up automation',
-      'Tracking that shows what\'s working',
-    ],
-    note: 'Best for: founders who have audience but aren\'t converting it into revenue.',
-  },
-  {
     id: 'community-growth',
     label: 'Community Growth',
     headline: 'Build the room people want to be in.',
@@ -221,7 +208,7 @@ function OutcomeBlock() {
         textAlign: 'center',
         margin: '0 auto 48px',
       }}>
-        Five outcomes.
+        Four outcomes.
       </h2>
 
       {/* Outcome buttons */}
