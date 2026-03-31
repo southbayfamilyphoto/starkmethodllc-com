@@ -449,11 +449,10 @@ function ClientGrid() {
             padding: '20px',
             backgroundColor: 'transparent',
             border: '1px solid rgba(196,168,130,0.4)',
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 12,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: '#8B1A1A',
+            fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif",
+            fontSize: 16,
+            letterSpacing: '0.08em',
+            color: 'rgba(26,26,26,0.6)',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
             marginTop: 1,
@@ -551,7 +550,7 @@ function ProcessBlock() {
                 fontFamily: "'Cormorant Garamond', serif",
                 fontSize: 32,
                 fontWeight: 300,
-                color: step.number === '04' ? '#8B1A1A' : 'var(--accent)',
+                color: 'var(--accent)',
                 lineHeight: 1,
                 marginBottom: 16,
               }}>
@@ -611,9 +610,7 @@ function AboutBlock() {
         </h2>
 
         {/* Three columns */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{
           gap: 48,
           borderTop: '1px solid rgba(26,26,26,0.12)',
           paddingTop: 48,
