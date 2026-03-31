@@ -5,7 +5,7 @@ import React, { useEffect, useState, useRef } from 'react'
 // ─── Block 1: Animated Intro ─────────────────────────────────────────────────
 
 const TITLE = 'Stark Method'
-const TAGLINE = 'Done-for-you founder leverage.'
+const TAGLINE = 'Done for you founder leverage.'
 
 const LETTER_DELAYS: Record<number, number> = {}
 TITLE.split('').forEach((_, i) => {
@@ -127,7 +127,7 @@ const OUTCOMES = [
       'Content and event programming',
       'Referral loops built into the experience',
     ],
-    note: 'Best for: founders who want leverage. One-to-many instead of one-to-one.',
+    note: 'Best for: founders who want leverage. One to many instead of one to one.',
   },
   {
     id: 'ai-search',
@@ -140,7 +140,7 @@ const OUTCOMES = [
       'Structured content for AI indexing',
       'Schema, signals, and search dominance',
     ],
-    note: 'Best for: founders who understand that AI search is the next category war — and want to win it.',
+    note: 'Best for: founders who understand that AI search is the next category war and want to win it.',
   },
 ]
 
@@ -470,7 +470,7 @@ function ClientGrid() {
         textAlign: 'center',
         paddingTop: 24,
       }}>
-        Partial list — 23 years of work.
+        Partial list. 23 years of work.
       </p>
     </section>
   )
@@ -482,7 +482,7 @@ const PROCESS = [
   {
     number: '01',
     title: 'The Leverage Audit',
-    body: 'We start by finding where your leverage already exists and where it\'s being lost. Deep diagnostic of your content, positioning, and market presence — so we build on what\'s real, not what sounds good.',
+    body: 'We start by finding where your leverage already exists and where it\'s being lost. Deep diagnostic of your content, positioning, and market presence so we build on what\'s real, not what sounds good.',
   },
   {
     number: '02',
@@ -618,7 +618,7 @@ function AboutBlock() {
           {[
             {
               label: 'The Foundation',
-              body: 'Stark Method was built in Los Angeles over 23 years inside industries where reputation, taste, and proximity are the only currencies that matter. We are not an agency. We are not a vendor. We are the founder\'s partner — peer-level, in the room, building alongside you.',
+              body: 'Stark Method was built in Los Angeles over 23 years inside industries where reputation, taste, and proximity are the only currencies that matter. We are not an agency. We are not a vendor. We are the founder\'s partner. Peer-level, in the room, building alongside you.',
             },
             {
               label: 'The Belief',
