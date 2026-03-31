@@ -186,11 +186,11 @@ function OutcomeBlock() {
       </h2>
 
       {/* Outcome buttons */}
-      <div className="flex flex-wrap justify-center gap-3 md:gap-2 mb-12">
+      <div className="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-3 md:gap-2 mb-12">
         {OUTCOMES.map(o => (
           <button
             key={o.id}
-            className={`outcome-btn ${active === o.id ? 'active' : ''} w-full md:w-auto`}
+            className={`outcome-btn ${active === o.id ? 'active' : ''}`}
             onClick={() => setActive(active === o.id ? null : o.id)}
           >
             {o.label}
