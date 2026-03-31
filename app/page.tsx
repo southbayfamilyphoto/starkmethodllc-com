@@ -206,7 +206,7 @@ function OutcomeBlock() {
             textAlign: 'center',
           }}
         >
-          <h3 className="text-[22px] md:text-[clamp(24px,3.5vw,36px)]" style={{
+          <h3 className="text-[32px] md:text-[clamp(24px,3.5vw,36px)]" style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 400,
             color: 'var(--cream)',
