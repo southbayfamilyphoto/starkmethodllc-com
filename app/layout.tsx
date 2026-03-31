@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Cormorant_Garamond } from 'next/font/google'
+import { DM_Sans, Cormorant_Garamond, Bebas_Neue, Bodoni_Moda } from 'next/font/google'
 import './globals.css'
 
 const dmSans = DM_Sans({
@@ -11,6 +11,19 @@ const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['300', '400', '600'],
   variable: '--font-cormorant',
+})
+
+const bebasNeue = Bebas_Neue({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-bebas',
+})
+
+const bodoniModa = Bodoni_Moda({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-bodoni',
 })
 
 export const metadata: Metadata = {
@@ -25,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${cormorant.variable}`}>
+      <body className={`${dmSans.variable} ${cormorant.variable} ${bebasNeue.variable} ${bodoniModa.variable}`}>
         {children}
       </body>
     </html>

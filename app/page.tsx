@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 // ─── Block 1: Animated Intro ─────────────────────────────────────────────────
 
@@ -16,33 +16,31 @@ function IntroBlock() {
   const [showTagline, setShowTagline] = useState(false)
   const [showLine, setShowLine]       = useState(false)
   const [showProps, setShowProps]     = useState(false)
-  const [showOutcome, setShowOutcome] = useState(false)
 
   useEffect(() => {
     const t1 = setTimeout(() => setShowTagline(true), 1200)
     const t2 = setTimeout(() => setShowLine(true),    2000)
     const t3 = setTimeout(() => setShowProps(true),   2600)
-    const t4 = setTimeout(() => setShowOutcome(true), 3400)
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4) }
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3) }
   }, [])
 
   return (
     <section style={{
-      minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
-      padding: '80px 48px',
+      alignItems: 'center',
+      textAlign: 'center',
+      padding: '80px 48px 24px',
       maxWidth: 960,
       margin: '0 auto',
     }}>
 
       {/* Title */}
       <h1 style={{
-        fontFamily: "'Cormorant Garamond', serif",
-        fontSize: 'clamp(52px, 8vw, 96px)',
-        fontWeight: 300,
-        letterSpacing: '-0.02em',
+        fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif",
+        fontSize: 'clamp(52px, 8vw, 100px)',
+        fontWeight: 400,
+        letterSpacing: '-0.01em',
         color: 'var(--cream)',
         lineHeight: 1,
         marginBottom: 32,
@@ -65,7 +63,7 @@ function IntroBlock() {
             className="typewriter-text"
             style={{
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: 'clamp(15px, 2vw, 18px)',
+              fontSize: 'clamp(16px, 2vw, 22px)',
               color: 'rgba(245,240,235,0.7)',
               letterSpacing: '0.01em',
               animationDuration: '2s',
@@ -81,7 +79,7 @@ function IntroBlock() {
       {showLine && (
         <span
           className="accent-line"
-          style={{ marginBottom: 32, animationDelay: '0s', animationDuration: '0.8s' }}
+          style={{ marginBottom: 32, animationDelay: '0s', animationDuration: '0.8s', background: '#8B1A1A', height: 2 }}
         />
       )}
 
@@ -111,36 +109,6 @@ function IntroBlock() {
         </div>
       )}
 
-      {/* Scroll cue */}
-      {showOutcome && (
-        <div
-          className="fade-up"
-          style={{
-            marginTop: 64,
-            animationDelay: '0s',
-            animationDuration: '0.7s',
-          }}
-        >
-          <a
-            href="#outcomes"
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 12,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,240,235,0.35)',
-              textDecoration: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-              transition: 'color 0.2s ease',
-            }}
-          >
-            Choose your outcome
-            <span style={{ fontSize: 16, lineHeight: 1 }}>↓</span>
-          </a>
-        </div>
-      )}
     </section>
   )
 }
@@ -149,21 +117,21 @@ function IntroBlock() {
 
 const OUTCOMES = [
   {
-    id: 'reach',
-    label: 'Reach',
-    headline: 'Build an audience that compounds.',
-    sub: 'Most founders are invisible to the people who would buy from them. We fix that.',
+    id: 'founder-transformation',
+    label: 'Founder Transformation',
+    headline: 'Rebuild your brand from the foundation.',
+    sub: 'Sometimes the brand needs to match the business you\'ve become. We rebuild it right.',
     items: [
-      'Content system tied to your category',
-      'AI-indexed presence across search + social',
-      'Weekly output with zero burnout',
-      'Distribution that reaches buyers, not followers',
+      'Brand architecture and positioning',
+      'Visual identity and messaging system',
+      'Website and digital presence rebuild',
+      'Full creative and strategic direction',
     ],
-    note: 'Best for: founders with something to say who haven\'t built the system to say it consistently.',
+    note: 'Best for: founders whose brand no longer reflects the quality of the work.',
   },
   {
-    id: 'authority',
-    label: 'Authority',
+    id: 'market-authority',
+    label: 'Market Authority',
     headline: 'Become the obvious choice in your category.',
     sub: 'The founder who owns the conversation owns the category. We build that position.',
     items: [
@@ -188,21 +156,8 @@ const OUTCOMES = [
     note: 'Best for: founders who have audience but aren\'t converting it into revenue.',
   },
   {
-    id: 'transform',
-    label: 'Transform',
-    headline: 'Rebuild your brand from the foundation.',
-    sub: 'Sometimes the brand needs to match the business you\'ve become. We rebuild it right.',
-    items: [
-      'Brand architecture and positioning',
-      'Visual identity and messaging system',
-      'Website and digital presence rebuild',
-      'Full creative and strategic direction',
-    ],
-    note: 'Best for: founders whose brand no longer reflects the quality of the work.',
-  },
-  {
-    id: 'community',
-    label: 'Community',
+    id: 'community-growth',
+    label: 'Community Growth',
     headline: 'Build the room people want to be in.',
     sub: 'The highest-leverage marketing is a community that recruits itself. We architect that.',
     items: [
@@ -211,42 +166,20 @@ const OUTCOMES = [
       'Content and event programming',
       'Referral loops built into the experience',
     ],
-    note: 'Best for: founders who want leverage — one-to-many instead of one-to-one.',
+    note: 'Best for: founders who want leverage. One-to-many instead of one-to-one.',
   },
 ]
 
 function OutcomeBlock() {
-  const [active, setActive]         = useState<string | null>(null)
-  const [name, setName]             = useState('')
-  const [email, setEmail]           = useState('')
-  const [company, setCompany]       = useState('')
-  const [notes, setNotes]           = useState('')
-  const [submitted, setSubmitted]   = useState(false)
-  const [submitting, setSubmitting] = useState(false)
+  const [active, setActive] = useState<string | null>(null)
 
   const current = OUTCOMES.find(o => o.id === active)
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    if (!name || !email) return
-    setSubmitting(true)
-    try {
-      await fetch('/api/inquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, company, outcome: active, notes }),
-      })
-    } catch {}
-    setSubmitted(true)
-    setSubmitting(false)
-  }
 
   return (
     <section
       id="outcomes"
       style={{
-        minHeight: '100vh',
-        padding: '80px 48px',
+        padding: '48px 48px 80px',
         maxWidth: 960,
         margin: '0 auto',
       }}
@@ -259,6 +192,7 @@ function OutcomeBlock() {
         textTransform: 'uppercase',
         color: 'var(--accent)',
         marginBottom: 24,
+        textAlign: 'center',
       }}>
         Choose Your Outcome
       </p>
@@ -267,16 +201,18 @@ function OutcomeBlock() {
         fontFamily: "'Cormorant Garamond', serif",
         fontSize: 'clamp(32px, 5vw, 52px)',
         fontWeight: 300,
-        color: 'var(--cream)',
+        color: 'rgba(245,240,235,0.55)',
         lineHeight: 1.15,
         marginBottom: 48,
-        maxWidth: 640,
+        maxWidth: 800,
+        textAlign: 'center',
+        margin: '0 auto 48px',
       }}>
         What does your business need most right now?
       </h2>
 
       {/* Outcome buttons */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 48 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 48, justifyContent: 'center' }}>
         {OUTCOMES.map(o => (
           <button
             key={o.id}
@@ -292,9 +228,8 @@ function OutcomeBlock() {
       {current && (
         <div
           style={{
-            borderLeft: '1px solid rgba(196,168,130,0.3)',
-            paddingLeft: 32,
             marginBottom: 64,
+            textAlign: 'center',
           }}
         >
           <h3 style={{
@@ -308,31 +243,25 @@ function OutcomeBlock() {
           </h3>
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 15,
-            color: 'rgba(245,240,235,0.6)',
+            fontSize: 17,
+            color: 'rgba(245,240,235,0.65)',
             lineHeight: 1.7,
-            marginBottom: 24,
+            marginBottom: 28,
             maxWidth: 560,
+            margin: '0 auto 28px',
           }}>
             {current.sub}
           </p>
 
-          <ul style={{ listStyle: 'none', marginBottom: 24 }}>
+          <ul style={{ listStyle: 'none', marginBottom: 28, textAlign: 'center' }}>
             {current.items.map((item, i) => (
               <li key={i} style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 14,
-                color: 'rgba(245,240,235,0.75)',
-                padding: '6px 0',
-                paddingLeft: 20,
-                position: 'relative',
+                fontSize: 16,
+                color: 'rgba(245,240,235,0.8)',
+                padding: '8px 0',
                 lineHeight: 1.5,
               }}>
-                <span style={{
-                  position: 'absolute',
-                  left: 0,
-                  color: 'var(--accent)',
-                }}>—</span>
                 {item}
               </li>
             ))}
@@ -340,98 +269,40 @@ function OutcomeBlock() {
 
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 12,
-            letterSpacing: '0.08em',
-            color: 'rgba(196,168,130,0.6)',
+            fontSize: 14,
+            letterSpacing: '0.06em',
+            color: 'rgba(196,168,130,0.7)',
             fontStyle: 'italic',
+            textAlign: 'center',
           }}>
             {current.note}
           </p>
         </div>
       )}
 
-      {/* Contact form — always visible */}
       <div style={{
         borderTop: '1px solid rgba(196,168,130,0.15)',
-        paddingTop: 48,
-        maxWidth: 480,
+        paddingTop: 40,
+        textAlign: 'center',
       }}>
-        {submitted ? (
-          <div>
-            <p style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 28,
-              fontWeight: 300,
-              color: 'var(--cream)',
-              marginBottom: 12,
-            }}>
-              We&apos;ll be in touch.
-            </p>
-            <p style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 14,
-              color: 'rgba(245,240,235,0.5)',
-            }}>
-              Collin will reach out within 24 hours.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit}>
-            <p style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 11,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,240,235,0.4)',
-              marginBottom: 28,
-            }}>
-              {active
-                ? `Let's talk about ${OUTCOMES.find(o => o.id === active)?.label.toLowerCase()}`
-                : 'Start the conversation'}
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 28, marginBottom: 32 }}>
-              <input
-                className="form-input"
-                type="text"
-                placeholder="Your name"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                required
-              />
-              <input
-                className="form-input"
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-              />
-              <input
-                className="form-input"
-                type="text"
-                placeholder="Company (optional)"
-                value={company}
-                onChange={e => setCompany(e.target.value)}
-              />
-              <textarea
-                className="form-textarea"
-                placeholder="What are you building? What's the problem you're trying to solve?"
-                value={notes}
-                onChange={e => setNotes(e.target.value)}
-                rows={3}
-              />
-            </div>
-
-            <button
-              className="submit-btn"
-              type="submit"
-              disabled={submitting}
-            >
-              {submitting ? 'Sending…' : 'Start the conversation'}
-            </button>
-          </form>
-        )}
+        <a
+          href="#conversation"
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 12,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'var(--accent)',
+            textDecoration: 'none',
+            border: '1px solid rgba(196,168,130,0.4)',
+            padding: '14px 40px',
+            borderRadius: 2,
+            display: 'inline-block',
+            transition: 'all 0.2s ease',
+          }}
+        >
+          Start the Conversation
+        </a>
       </div>
     </section>
   )
@@ -452,10 +323,10 @@ const GRID_ITEMS: { src: string; alt: string; type: 'photo' | 'logo' }[] = [
   { src: `${BASE}00028.PNG`,  alt: 'Puma',                       type: 'logo'  },
   { src: `${BASE}00001.JPG`,  alt: 'Vogue editorial',            type: 'photo' },
   { src: `${BASE}00005.JPG`,  alt: 'Barrentine Group',           type: 'logo'  },
-  { src: `${BASE}00029.JPG`,  alt: 'Omar Epps — From Fatherless to Fatherhood', type: 'photo' },
+  { src: `${BASE}00029.PNG`,  alt: 'Omar Epps — From Fatherless to Fatherhood', type: 'photo' },
   { src: `${BASE}00019.PNG`,  alt: 'Samantha Sung',              type: 'logo'  },
   { src: `${BASE}00004.JPG`,  alt: 'Portrait',                   type: 'photo' },
-  { src: `${BASE}00014.PNG`,  alt: "Bingham's Bourbon",          type: 'logo'  },
+  { src: `${BASE}00014.JPG`,  alt: "Bingham's Bourbon",          type: 'logo'  },
   { src: `${BASE}00006.JPG`,  alt: 'Portrait',                   type: 'photo' },
   { src: `${BASE}00022.PNG`,  alt: 'Fenty',                      type: 'logo'  },
   { src: `${BASE}00015.JPG`,  alt: 'Status Magazine — Ian Somerhalder', type: 'photo' },
@@ -480,78 +351,150 @@ const GRID_ITEMS: { src: string; alt: string; type: 'photo' | 'logo' }[] = [
 ]
 
 function ClientGrid() {
+  const [showAll, setShowAll]   = useState(false)
+  const [visible2, setVisible2] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+  const visible = showAll ? GRID_ITEMS : GRID_ITEMS.slice(0, 12)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible2(true) },
+      { threshold: 0.2 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section style={{
-      padding: '100px 0 0',
-      borderTop: '1px solid rgba(196,168,130,0.1)',
+      padding: '100px 0 60px',
+      backgroundColor: '#F2EDE4',
     }}>
       {/* Header */}
-      <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 48px 56px' }}>
-        <p style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 11,
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          color: 'var(--accent)',
-          marginBottom: 16,
-        }}>
-          Clients &amp; Work
-        </p>
+      <div ref={ref} style={{ maxWidth: 960, margin: '0 auto', padding: '0 48px 48px', textAlign: 'center' }}>
+
         <h2 style={{
           fontFamily: "'Cormorant Garamond', serif",
-          fontSize: 'clamp(28px, 4vw, 44px)',
+          fontSize: 'clamp(32px, 5vw, 52px)',
           fontWeight: 300,
-          color: 'var(--cream)',
-          lineHeight: 1.2,
-          maxWidth: 560,
+          lineHeight: 1.1,
+          whiteSpace: 'nowrap',
+          margin: '0 auto 32px',
+          color: 'rgba(26,26,26,0.85)',
+          opacity: visible2 ? 1 : 0,
+          transform: visible2 ? 'translateY(0)' : 'translateY(16px)',
+          transition: 'opacity 0.8s ease, transform 0.8s ease',
         }}>
-          The work spans brands, talent, editorial, and founders.
+          Who we&apos;ve built with.
         </h2>
+
       </div>
 
-      {/* Masonry grid — full width */}
+      {/* Grid with animated border frame */}
       <div style={{
-        columns: '4 160px',
-        columnGap: 3,
-        padding: '0 3px',
+        maxWidth: 900,
+        margin: '0 auto',
+        padding: '0 48px',
+        position: 'relative',
       }}>
-        {GRID_ITEMS.map((item, i) => (
-          <div
-            key={i}
-            style={{
-              breakInside: 'avoid',
-              marginBottom: 3,
-              backgroundColor: item.type === 'logo' ? 'var(--cream)' : '#0a0a0a',
-              padding: item.type === 'logo' ? '28px 24px' : 0,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              minHeight: item.type === 'logo' ? 100 : 'auto',
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={item.src}
-              alt={item.alt}
+        {/* Top line sweeps across */}
+        <div style={{ overflow: 'hidden', marginBottom: 0 }}>
+          <div style={{
+            height: 1,
+            backgroundColor: 'rgba(196,168,130,0.35)',
+            width: visible2 ? '100%' : '0%',
+            transition: 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s',
+          }} />
+        </div>
+
+        {/* Left border animates down */}
+        <div style={{
+          position: 'absolute',
+          left: 48,
+          top: 1,
+          width: 1,
+          backgroundColor: 'rgba(196,168,130,0.35)',
+          height: visible2 ? 'calc(100% - 1px)' : '0%',
+          transition: 'height 1s cubic-bezier(0.4, 0, 0.2, 1) 1.6s',
+        }} />
+
+        {/* Right border animates down */}
+        <div style={{
+          position: 'absolute',
+          right: 48,
+          top: 1,
+          width: 1,
+          backgroundColor: 'rgba(196,168,130,0.35)',
+          height: visible2 ? 'calc(100% - 1px)' : '0%',
+          transition: 'height 1s cubic-bezier(0.4, 0, 0.2, 1) 1.6s',
+        }} />
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: 1,
+          backgroundColor: visible2 ? 'rgba(196,168,130,0.35)' : 'transparent',
+          transition: 'background-color 0.6s ease 2.6s',
+        }}>
+          {visible.map((item, i) => (
+            <div
+              key={i}
               style={{
-                width: '100%',
-                height: item.type === 'logo' ? 'auto' : 'auto',
-                maxHeight: item.type === 'logo' ? 60 : 'none',
-                objectFit: item.type === 'logo' ? 'contain' : 'cover',
-                display: 'block',
+                backgroundColor: '#F2EDE4',
+                height: 220,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: item.type === 'logo' ? '24px 28px' : '8px',
+                overflow: 'hidden',
               }}
-            />
-          </div>
-        ))}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.src}
+                alt={item.alt}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: '100%',
+                  objectFit: 'contain',
+                  display: 'block',
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 48px' }}>
+        <button
+          onClick={() => setShowAll(!showAll)}
+          style={{
+            width: '100%',
+            padding: '20px',
+            backgroundColor: 'transparent',
+            border: '1px solid rgba(196,168,130,0.4)',
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 12,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: '#8B1A1A',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            marginTop: 1,
+          }}
+        >
+          {showAll ? 'Show Less' : 'Load More'}
+        </button>
       </div>
 
       <p style={{
         fontFamily: "'DM Sans', sans-serif",
         fontSize: 11,
-        color: 'rgba(245,240,235,0.2)',
+        color: 'rgba(26,26,26,0.25)',
         letterSpacing: '0.08em',
-        textAlign: 'right',
-        padding: '16px 24px 0',
+        textAlign: 'center',
+        paddingTop: 24,
       }}>
         Partial list — 23 years of work.
       </p>
@@ -589,17 +532,18 @@ function ProcessBlock() {
     <section style={{
       padding: '100px 48px',
       borderTop: '1px solid rgba(196,168,130,0.1)',
-      backgroundColor: 'rgba(196,168,130,0.03)',
+      backgroundColor: '#3a3d42',
     }}>
       <div style={{ maxWidth: 960, margin: '0 auto' }}>
 
         <p style={{
           fontFamily: "'DM Sans', sans-serif",
-          fontSize: 11,
+          fontSize: 16,
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
           color: 'var(--accent)',
           marginBottom: 16,
+          textAlign: 'center',
         }}>
           How It Works
         </p>
@@ -612,99 +556,57 @@ function ProcessBlock() {
           lineHeight: 1.2,
           marginBottom: 72,
           maxWidth: 520,
+          textAlign: 'center',
+          margin: '0 auto 72px',
         }}>
           Four phases. One compounding system.
         </h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 0, maxWidth: 680, margin: '0 auto' }}>
           {PROCESS.map((step, i) => (
             <div
               key={step.number}
               style={{
-                display: 'grid',
-                gridTemplateColumns: '80px 1fr',
-                gap: 40,
                 padding: '48px 0',
                 borderTop: i === 0 ? '1px solid rgba(196,168,130,0.15)' : '1px solid rgba(196,168,130,0.1)',
+                textAlign: 'center',
               }}
             >
-              {/* Number */}
               <div style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 48,
+                fontSize: 32,
                 fontWeight: 300,
-                color: 'rgba(196,168,130,0.25)',
+                color: step.number === '04' ? '#8B1A1A' : 'var(--accent)',
                 lineHeight: 1,
-                paddingTop: 4,
+                marginBottom: 16,
               }}>
                 {step.number}
               </div>
 
-              {/* Content */}
-              <div>
-                <h3 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: 'clamp(20px, 2.5vw, 28px)',
-                  fontWeight: 400,
-                  color: 'var(--cream)',
-                  marginBottom: 16,
-                  lineHeight: 1.2,
-                }}>
-                  {step.title}
-                </h3>
-                <p style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 15,
-                  lineHeight: 1.75,
-                  color: 'rgba(245,240,235,0.55)',
-                  maxWidth: 560,
-                }}>
-                  {step.body}
-                </p>
-              </div>
+              <h3 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 'clamp(20px, 2.5vw, 28px)',
+                fontWeight: 400,
+                color: 'var(--cream)',
+                marginBottom: 16,
+                lineHeight: 1.2,
+              }}>
+                {step.title}
+              </h3>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 15,
+                lineHeight: 1.75,
+                color: 'rgba(245,240,235,0.55)',
+                maxWidth: 520,
+                margin: '0 auto',
+              }}>
+                {step.body}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div style={{
-          marginTop: 72,
-          paddingTop: 48,
-          borderTop: '1px solid rgba(196,168,130,0.1)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 40,
-          flexWrap: 'wrap',
-        }}>
-          <p style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(20px, 2.5vw, 28px)',
-            fontWeight: 300,
-            color: 'var(--cream)',
-            lineHeight: 1.3,
-            maxWidth: 400,
-          }}>
-            Ready to build the system that compounds?
-          </p>
-          <a
-            href="#outcomes"
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 12,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'var(--accent)',
-              textDecoration: 'none',
-              border: '1px solid rgba(196,168,130,0.4)',
-              padding: '14px 32px',
-              borderRadius: 2,
-              transition: 'all 0.2s ease',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Choose your outcome
-          </a>
-        </div>
       </div>
     </section>
   )
@@ -716,49 +618,69 @@ function AboutBlock() {
   return (
     <section style={{
       padding: '120px 48px',
-      backgroundColor: 'var(--cream)',
-      position: 'relative',
-      overflow: 'hidden',
+      backgroundColor: '#E8DDD0',
     }}>
-      <div style={{
-        maxWidth: 680,
-        margin: '0 auto',
-        textAlign: 'center',
-        position: 'relative',
-        zIndex: 1,
-      }}>
+      <div style={{ maxWidth: 960, margin: '0 auto' }}>
 
+        {/* Main headline */}
         <h2 style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 'clamp(28px, 5vw, 48px)',
-          fontWeight: 700,
-          letterSpacing: '0.18em',
-          textTransform: 'uppercase',
-          color: 'var(--ink)',
-          marginBottom: 48,
+          fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif",
+          fontSize: 'clamp(36px, 6vw, 72px)',
+          fontWeight: 400,
+          color: 'rgba(26,26,26,0.85)',
+          lineHeight: 1.1,
+          textAlign: 'center',
+          margin: '0 auto 64px',
         }}>
           About Us
         </h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+        {/* Three columns */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 48,
+          borderTop: '1px solid rgba(26,26,26,0.12)',
+          paddingTop: 48,
+        }}>
           {[
-            'Stark Method is a strategy-first system built for founders who understand the value of consistency over time. Our perspective was forged in Los Angeles since the early 2000s inside industries where reputation, taste, and proximity are the only currencies that matter.',
-            'We believe growth comes from clarity, discipline, and repetition — not from chasing fleeting tactics. While attention can be bought, respect is earned. And when respect compounds, momentum follows.',
-            'Being close to culture and creative pressure has reinforced a simple truth: The brands that last are the ones that know what they stand for and show up that way consistently. Stark Method exists to help you build your narrative, run the machine, and let your brand compound in your market.',
-          ].map((para, i) => (
-            <p
-              key={i}
-              style={{
+            {
+              label: 'The Foundation',
+              body: 'Stark Method is a strategy-first system built for founders who understand the value of consistency over time. Our perspective was forged in Los Angeles since the early 2000s inside industries where reputation, taste, and proximity are the only currencies that matter.',
+            },
+            {
+              label: 'The Belief',
+              body: 'Growth comes from clarity, discipline, and repetition — not from chasing fleeting tactics. While attention can be bought, respect is earned. And when respect compounds, momentum follows.',
+            },
+            {
+              label: 'The Work',
+              body: 'The brands that last are the ones that know what they stand for and show up that way consistently. Stark Method exists to help you build your narrative, run the machine, and let your brand compound in your market.',
+            },
+          ].map((col) => (
+            <div key={col.label}>
+              <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 'clamp(14px, 1.6vw, 16px)',
+                fontSize: col.label === 'The Foundation' ? 16 : 13,
+                fontWeight: 700,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: col.label === 'The Foundation' ? '#8B1A1A' : 'rgba(196,168,130,0.9)',
+                marginBottom: 16,
+              }}>
+                {col.label}
+              </p>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 17,
                 lineHeight: 1.8,
-                color: 'rgba(26,26,26,0.72)',
-              }}
-            >
-              {para}
-            </p>
+                color: 'rgba(26,26,26,0.65)',
+              }}>
+                {col.body}
+              </p>
+            </div>
           ))}
         </div>
+
       </div>
     </section>
   )
@@ -767,9 +689,9 @@ function AboutBlock() {
 // ─── Block 6: Strategy Session Form + Footer ─────────────────────────────────
 
 function StrategyBlock() {
-  const [form, setForm]         = useState({ firstName: '', lastName: '', email: '', website: '', bizIg: '', personalIg: '', phone: '', notes: '' })
+  const [form, setForm]           = useState({ name: '', email: '', building: '' })
   const [submitted, setSubmitted] = useState(false)
-  const [saving, setSaving]     = useState(false)
+  const [saving, setSaving]       = useState(false)
 
   function set(field: string, value: string) {
     setForm(prev => ({ ...prev, [field]: value }))
@@ -777,22 +699,17 @@ function StrategyBlock() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (!form.name || !form.email) return
     setSaving(true)
     try {
       await fetch('/api/inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name:    `${form.firstName} ${form.lastName}`.trim(),
+          name:    form.name,
           email:   form.email,
           outcome: 'strategy-session',
-          notes:   [
-            form.website     ? `Website: ${form.website}`         : '',
-            form.bizIg       ? `Biz IG: ${form.bizIg}`            : '',
-            form.personalIg  ? `Personal IG: ${form.personalIg}`  : '',
-            form.phone       ? `Phone: ${form.phone}`             : '',
-            form.notes       ? `Notes: ${form.notes}`             : '',
-          ].filter(Boolean).join('\n'),
+          notes:   form.building ? `What they're building: ${form.building}` : '',
         }),
       })
     } catch {}
@@ -800,50 +717,57 @@ function StrategyBlock() {
     setSaving(false)
   }
 
-  const inputStyle: React.CSSProperties = {
+const inputStyle: React.CSSProperties = {
     width: '100%',
     background: 'transparent',
     border: 'none',
     borderBottom: '1px solid rgba(196,168,130,0.3)',
     padding: '12px 0',
     fontFamily: "'DM Sans', sans-serif",
-    fontSize: 14,
+    fontSize: 15,
     color: 'var(--cream)',
     outline: 'none',
+  }
+
+  const btnStyle: React.CSSProperties = {
+    width: '100%',
+    background: 'transparent',
+    border: '1px solid var(--accent)',
+    color: 'var(--accent)',
+    borderRadius: 2,
+    padding: '16px 32px',
+    fontFamily: "'DM Sans', sans-serif",
+    fontSize: 12,
+    letterSpacing: '0.18em',
+    textTransform: 'uppercase',
+    cursor: 'pointer',
+    transition: 'all 0.25s ease',
+    marginTop: 8,
   }
 
   return (
     <>
       {/* Form section */}
-      <section style={{
-        padding: '100px 48px 80px',
-        backgroundColor: 'var(--ink)',
-        borderTop: '1px solid rgba(196,168,130,0.1)',
-      }}>
+      <section
+        id="conversation"
+        style={{
+          padding: '100px 48px 80px',
+          backgroundColor: 'var(--ink)',
+          borderTop: '1px solid rgba(196,168,130,0.1)',
+        }}
+      >
         <div style={{ maxWidth: 480, margin: '0 auto' }}>
-
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 11,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: 'var(--accent)',
-            marginBottom: 16,
-            textAlign: 'center',
-          }}>
-            Let&apos;s Work Together
-          </p>
 
           <h2 style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 'clamp(28px, 4vw, 44px)',
             fontWeight: 300,
             color: 'var(--cream)',
-            textAlign: 'center',
             marginBottom: 56,
             lineHeight: 1.2,
+            textAlign: 'center',
           }}>
-            Start with a strategy session.
+            All great success started with a conversation.
           </h2>
 
           {submitted ? (
@@ -855,52 +779,46 @@ function StrategyBlock() {
                 color: 'var(--cream)',
                 marginBottom: 12,
               }}>
-                We&apos;ll be in touch.
+                Check your email.
               </p>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 14,
-                color: 'rgba(245,240,235,0.4)',
+                color: 'rgba(245,240,235,0.45)',
+                marginBottom: 40,
               }}>
                 Collin will reach out within 24 hours.
               </p>
+              <a
+                href="https://cal.com/collinstark/strategy-call"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ ...btnStyle, display: 'inline-block', textDecoration: 'none', textAlign: 'center' }}
+              >
+                Or book your time now
+              </a>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-                <input style={inputStyle} type="text"  placeholder="First name *"  value={form.firstName}  onChange={e => set('firstName',  e.target.value)} required />
-                <input style={inputStyle} type="text"  placeholder="Last name"      value={form.lastName}   onChange={e => set('lastName',   e.target.value)} />
-              </div>
-              <input style={inputStyle} type="email" placeholder="Email *"                       value={form.email}      onChange={e => set('email',      e.target.value)} required />
-              <input style={inputStyle} type="text"  placeholder="Business website"              value={form.website}    onChange={e => set('website',    e.target.value)} />
-              <input style={inputStyle} type="text"  placeholder="Business Instagram handle"     value={form.bizIg}      onChange={e => set('bizIg',      e.target.value)} />
-              <input style={inputStyle} type="text"  placeholder="Personal Instagram handle"     value={form.personalIg} onChange={e => set('personalIg', e.target.value)} />
-              <input style={inputStyle} type="tel"   placeholder="Phone number"                  value={form.phone}      onChange={e => set('phone',      e.target.value)} />
-              <input style={inputStyle} type="text"  placeholder="Anything you want us to know"  value={form.notes}      onChange={e => set('notes',      e.target.value)} />
-
-              <div style={{ marginTop: 8 }}>
-                <button
-                  type="submit"
-                  disabled={saving}
-                  style={{
-                    width: '100%',
-                    background: 'transparent',
-                    border: '1px solid var(--accent)',
-                    color: 'var(--accent)',
-                    borderRadius: 2,
-                    padding: '16px 32px',
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: 12,
-                    letterSpacing: '0.18em',
-                    textTransform: 'uppercase',
-                    cursor: saving ? 'not-allowed' : 'pointer',
-                    opacity: saving ? 0.6 : 1,
-                    transition: 'all 0.25s ease',
-                  }}
-                >
-                  {saving ? 'Sending…' : 'Book Your Strategy Session'}
-                </button>
-              </div>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+              <input style={inputStyle} type="text"  placeholder="Your name *"           value={form.name}     onChange={e => set('name',     e.target.value)} required />
+              <input style={inputStyle} type="email" placeholder="Email *"               value={form.email}    onChange={e => set('email',    e.target.value)} required />
+              <textarea
+                placeholder="What are you building?"
+                value={form.building}
+                onChange={e => set('building', e.target.value)}
+                rows={3}
+                style={{
+                  ...inputStyle,
+                  borderBottom: 'none',
+                  border: '1px solid rgba(196,168,130,0.3)',
+                  padding: '12px 16px',
+                  resize: 'none',
+                  borderRadius: 2,
+                }}
+              />
+              <button type="submit" style={{ ...btnStyle, opacity: saving ? 0.6 : 1, cursor: saving ? 'not-allowed' : 'pointer' }} disabled={saving}>
+                {saving ? 'Sending…' : 'Start the Conversation'}
+              </button>
             </form>
           )}
         </div>
@@ -909,50 +827,57 @@ function StrategyBlock() {
       {/* Footer */}
       <footer style={{
         backgroundColor: '#3a3d42',
-        padding: '40px 48px',
+        padding: '60px 48px',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: 32,
-        flexWrap: 'wrap',
+        gap: 16,
       }}>
         <span style={{
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "var(--font-bodoni), 'Bodoni Moda', serif",
           fontSize: 'clamp(32px, 6vw, 64px)',
-          fontWeight: 800,
-          letterSpacing: '0.04em',
-          textTransform: 'uppercase',
+          fontWeight: 400,
+          letterSpacing: '0.02em',
           color: '#fff',
           lineHeight: 1,
           opacity: 0.9,
+          whiteSpace: 'nowrap',
         }}>
           Stark Method
         </span>
 
-        <a
-          href="mailto:collin@starkmethodLLC.com"
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 'clamp(13px, 1.5vw, 16px)',
-            color: 'rgba(255,255,255,0.75)',
-            textDecoration: 'none',
-          }}
-        >
-          collin@starkmethodLLC.com
-        </a>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 32,
+        }}>
+          <a
+            href="mailto:collin@starkmethodLLC.com"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 'clamp(12px, 1.2vw, 14px)',
+              color: 'rgba(255,255,255,0.6)',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            collin@starkmethodLLC.com
+          </a>
 
-        <a
-          href="tel:+13104300551"
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 'clamp(13px, 1.5vw, 16px)',
-            fontWeight: 600,
-            color: 'rgba(255,255,255,0.75)',
-            textDecoration: 'none',
-          }}
-        >
-          phone: (310) 430 0551
-        </a>
+          <a
+            href="tel:+13104300551"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 'clamp(12px, 1.2vw, 14px)',
+              color: 'rgba(255,255,255,0.6)',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            (310) 430-0551
+          </a>
+        </div>
       </footer>
     </>
   )

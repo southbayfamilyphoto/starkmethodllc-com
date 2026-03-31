@@ -42,6 +42,11 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes lineExpand {
+  from { width: 0; opacity: 0; }
+  to   { width: 100%; opacity: 1; }
+}
+
 @keyframes typewriter {
   from { width: 0; }
   to   { width: 100%; }
@@ -63,8 +68,8 @@ body {
   overflow: hidden;
   white-space: nowrap;
   width: 0;
-  border-right: 2px solid var(--accent);
-  animation: typewriter 2s steps(60) forwards, blink 0.8s step-end infinite;
+  border-right: 2px solid transparent;
+  animation: typewriter 2s steps(60) forwards, blink 0.8s step-end 3;
 }
 
 .accent-line {
