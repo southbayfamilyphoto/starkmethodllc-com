@@ -58,21 +58,20 @@ function IntroBlock() {
 
       {/* Tagline */}
       {showTagline && (
-        <div style={{ marginBottom: 32 }}>
-          <span
-            className="typewriter-text"
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 'clamp(16px, 2vw, 22px)',
-              color: 'rgba(245,240,235,0.7)',
-              letterSpacing: '0.01em',
-              animationDuration: '2s',
-              animationDelay: '0s',
-            }}
-          >
-            {TAGLINE}
-          </span>
-        </div>
+        <p
+          className="fade-up"
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 'clamp(16px, 2vw, 22px)',
+            color: 'rgba(245,240,235,0.7)',
+            letterSpacing: '0.01em',
+            marginBottom: 32,
+            animationDuration: '0.8s',
+            animationDelay: '0s',
+          }}
+        >
+          {TAGLINE}
+        </p>
       )}
 
       {/* Gold line */}
@@ -189,12 +188,13 @@ function OutcomeBlock() {
       {/* Section label */}
       <p style={{
         fontFamily: "'DM Sans', sans-serif",
-        fontSize: 11,
-        letterSpacing: '0.2em',
+        fontSize: 13,
+        letterSpacing: '0.22em',
         textTransform: 'uppercase',
         color: 'var(--accent)',
-        marginBottom: 24,
+        marginBottom: 16,
         textAlign: 'center',
+        opacity: 0.85,
       }}>
         One system.
       </p>
