@@ -736,7 +736,7 @@ const inputStyle: React.CSSProperties = {
             lineHeight: 1.2,
             textAlign: 'center',
           }}>
-            All great success started with a conversation.
+            Start the Conversation.
           </h2>
 
           {submitted ? (
@@ -786,7 +786,7 @@ const inputStyle: React.CSSProperties = {
                 }}
               />
               <button type="submit" style={{ ...btnStyle, opacity: saving ? 0.6 : 1, cursor: saving ? 'not-allowed' : 'pointer' }} disabled={saving}>
-                {saving ? 'Sending…' : 'Start the Conversation'}
+                {saving ? 'Sending…' : 'Submit Information'}
               </button>
             </form>
           )}
