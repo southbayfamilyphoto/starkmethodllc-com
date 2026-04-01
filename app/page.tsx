@@ -615,15 +615,15 @@ function AboutBlock() {
           {[
             {
               label: 'The Foundation',
-              body: 'Stark Method was built in Los Angeles over 23 years inside industries where reputation, taste, and proximity are the only currencies that matter. We are not an agency. We are not a vendor. We are the founder\'s partner. Peer-level, in the room, building alongside you.',
+              body: '23 years in Hollywood. Working inside the rooms where taste is the only currency — with celebrities, directors, major brands, and the people who shape culture. Style at that level is not aesthetic. It is identity, authority, and trust operating in perfect sync. That is what we bring to founders.',
             },
             {
               label: 'The Belief',
-              body: 'Consistency across every platform is no longer just branding — it\'s how AI decides who the authority is. The founders who build the right system now will own their category for the next decade. We build that system for you.',
+              body: 'The founders who win are the ones who show up the same way everywhere — in the room, on the feed, in the inbox, in the AI result. Consistency is no longer just branding. It is how trust is built with humans and how authority is recognized by AI. We build that sync for you.',
             },
             {
               label: 'The Work',
-              body: 'We build your leverage like it\'s ours. That means we don\'t hand you a deck and disappear. We build it, run it, and scale it — until the system works without you in every seat. Done for you. Built to last.',
+              body: 'We are not an agency. We are not a vendor. We are your partner — peer-level, in the room, building alongside you. We build your leverage like it is ours. Done for you, built to last, until the system works without you in every seat.',
             },
           ].map((col) => (
             <div key={col.label}>
