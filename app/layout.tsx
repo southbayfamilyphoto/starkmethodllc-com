@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { DM_Sans, Cormorant_Garamond, Bebas_Neue, Bodoni_Moda } from 'next/font/google'
+import Tracker from '../components/Tracker'
 import './globals.css'
 
 const dmSans = DM_Sans({
@@ -39,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSans.variable} ${cormorant.variable} ${bebasNeue.variable} ${bodoniModa.variable}`}>
+        <Tracker />
         {children}
       </body>
     </html>
