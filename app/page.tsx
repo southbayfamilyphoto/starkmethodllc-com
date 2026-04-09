@@ -5,7 +5,7 @@ import React, { useEffect, useState, useRef } from 'react'
 // ─── Block 1: Animated Intro ─────────────────────────────────────────────────
 
 const TITLE = 'Stark Method'
-const TAGLINE = 'Done for you founder leverage.'
+const TAGLINE = 'AI-Integrated Systems · The Art of System Design for Business'
 
 const LETTER_DELAYS: Record<number, number> = {}
 TITLE.split('').forEach((_, i) => {
