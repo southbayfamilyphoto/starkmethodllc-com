@@ -74,6 +74,25 @@ function IntroBlock() {
         </p>
       )}
 
+      {/* Secondary line */}
+      {showTagline && (
+        <p
+          className="fade-up"
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 'clamp(13px, 1.5vw, 17px)',
+            color: 'rgba(245,240,235,0.45)',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            marginBottom: 32,
+            animationDuration: '0.8s',
+            animationDelay: '0.2s',
+          }}
+        >
+          Done for you founder leverage
+        </p>
+      )}
+
       {/* Gold line */}
       {showLine && (
         <span
